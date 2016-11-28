@@ -10,8 +10,8 @@ import cjson
 from django.conf import settings
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.db.models import ForeignKey
-from piston.handler import BaseHandler
-from piston.utils import rc
+from piston3.handler import BaseHandler
+from piston3.utils import rc
 
 from .decorators import validate
 from .responses import succeed, error

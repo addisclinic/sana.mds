@@ -4,7 +4,7 @@
 import cjson
 from django.conf import settings
 from django.contrib.auth import authenticate
-from piston.authentication import HttpBasicAuthentication
+from piston3.authentication import HttpBasicAuthentication
 
 class HttpBasicAuthentication2(object):
     """

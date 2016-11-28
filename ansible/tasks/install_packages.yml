@@ -14,7 +14,6 @@
       - python-pip
       - python-cjson
       - python-django
-      - python-django-piston
       - python-mysqldb
       - python-libxml2
       - python-lxml
@@ -31,3 +30,4 @@
     become_user: root
     with_items:
       - django-extra-views
+      - django-piston3

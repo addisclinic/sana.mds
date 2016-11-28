@@ -11,8 +11,8 @@ from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
-from piston.handler import BaseHandler
-from piston.resource import Resource
+from piston3.handler import BaseHandler
+from piston3.resource import Resource
 
 from mds.api import do_authenticate, LOGGER
 from mds.api.contrib import backends

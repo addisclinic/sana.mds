@@ -13,7 +13,7 @@ import logging
 
 from django.conf import settings
 from django.forms import ValidationError
-from piston.handler import BaseHandler
+from piston3.handler import BaseHandler
 
 from mds.core.handlers import EventHandler as BaseRequestHandler
 

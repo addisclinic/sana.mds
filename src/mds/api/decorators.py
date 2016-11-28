@@ -13,7 +13,7 @@ from .responses import error, fail
 
 from django.forms.models import modelform_factory
 from django.utils.translation import ugettext_lazy as _
-from piston.utils import validate, rc, decorator
+from piston3.utils import validate, rc, decorator
 
 from django.core.signals import request_finished, got_request_exception, Signal
 from django.db import models

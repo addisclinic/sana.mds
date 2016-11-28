@@ -4,7 +4,7 @@
 :version: 2.0
 :copyright: Sana 2012, released under BSD New License(http://sana.mit.edu/license)
 '''
-from piston.handler import BaseHandler
+from piston3.handler import BaseHandler
 
 from .forms import *
 from .models import *
