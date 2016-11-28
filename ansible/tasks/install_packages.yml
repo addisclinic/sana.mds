@@ -1,0 +1,33 @@
+---
+  - name: Upgrade apt
+    apt: upgrade=yes
+    become: true
+    become_user: root
+
+  - name: Install apt packages
+    apt: name={{ item }} state=present
+    become: true
+    become_user: root
+    with_items:
+      - libapache2-mod-wsgi
+      - libapache2-mod-jk
+      - python-pip
+      - python-cjson
+      - python-django
+      - python-django-piston
+      - python-mysqldb
+      - python-libxml2
+      - python-lxml
+      - python-django-extensions
+      - python-imaging
+      - sqlite3
+      - javascript-common
+      - libjs-jquery-ui
+      - git
+
+  - name: Install python packages
+    pip: name={{ item }} state=present
+    become: true
+    become_user: root
+    with_items:
+      - django-extra-views

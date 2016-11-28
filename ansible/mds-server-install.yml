@@ -1,0 +1,44 @@
+---
+- name: MDS install
+  hosts: mds
+
+  pre_tasks:
+    - include: tasks/install_packages.yml
+
+  tasks:
+    - name: Create Sana directory for MDS
+      file: path=/opt/sana/sana.mds state=directory owner=www-data group=www-data
+      become: true
+      become_user: root
+
+    - name: clone MDS repo
+      git: repo={{ REPOSITORY }} dest=/home/{{ ansible_ssh_user }}/git/sana.mds version={{ VERSION }}
+      become: true
+      become_user: root
+      register: update_repo
+
+    - name: link repo code to /opt/sana location
+      file: src=/home/{{ ansible_ssh_user }}/git/sana.mds/src/mds path=/opt/sana/sana.mds/mds state=link force=yes owner=www-data group=www-data
+      become: true
+      become_user: root
+      when: update_repo|changed
+
+    - name: create cache directories
+      file: path=/opt/sana/sana.mds/{{ item }} state=directory owner=www-data group=www-data
+      become: true
+      become_user: root
+      with_items:
+        - cache
+        - cache/static
+        - cache/media
+
+    - name: link sana.mds/mds directory to /var/www
+      file: path=/var/www/mds src=/opt/sana/sana.mds/mds state=link
+
+    - name: upload settings files
+      template: src=templates/{{ item }}.j2 dest=/opt/sana/sana.mds/mds/{{ item }}.py owner=www-data group=www-data
+      become: true
+      become_user: root
+      with_items:
+        - settings
+        - local_settings

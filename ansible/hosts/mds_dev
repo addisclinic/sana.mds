@@ -1,0 +1,7 @@
+mds-server ansible_ssh_host=dev.addisclinic.org
+
+[mds]
+mds-server
+
+[addis_dev:children]
+mds
